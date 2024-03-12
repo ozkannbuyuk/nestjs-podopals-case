@@ -12,7 +12,11 @@ export class ProductsService {
 
   // Get All Products
   async findAll(): Promise<Product[]> {
-    return await this.productsRepository.find();
+    return await this.productsRepository.find({
+      order: {
+        price: 'DESC',
+      },
+    });
   }
 
   // Get One Product
