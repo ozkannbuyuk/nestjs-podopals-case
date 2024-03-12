@@ -15,7 +15,7 @@
 ❓ About
 </h2>
 
-...
+This project provides an API endpoint for generating mock products with various attributes such as product name, price, SKU, and stock levels. Additionally, it implements functionality for sorting products by price in descending order and allows specific products to be pinned to certain positions within the sorted list.
 
 <h2>
 <br />
