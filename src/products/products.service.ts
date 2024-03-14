@@ -12,11 +12,25 @@ export class ProductsService {
 
   // Get All Products
   async findAll(): Promise<Product[]> {
-    return await this.productsRepository.find({
+    let products = await this.productsRepository.find({
       order: {
-        price: 'DESC',
+        price: 'ASC',
       },
     });
+
+    const pinnedProducts = products.filter(
+      (product) => product.position !== null && product.position !== undefined,
+    );
+
+    products = products.filter(
+      (product) => product.position === null || product.position === undefined,
+    );
+
+    pinnedProducts.forEach((pinnedProduct) => {
+      products.splice(pinnedProduct.position - 1, 0, pinnedProduct);
+    });
+
+    return products;
   }
 
   // Get One Product
